@@ -53,6 +53,14 @@ uint256 GetOutputsHash(const CTransaction &txTo)
     return ss.GetHash();
 }
 
+uint256 GetInputsHash(const CTransaction &txTo)
+{
+    CHashWriter ss(SER_GETHASH, 0);
+    for (unsigned int n = 0; n < txTo.vin.size(); n++)
+    {
+        ss << txTo.vin[n];
+    }
+}
 /**
  * Wrapper that serializes like CTransaction, but with the modifications
  *  required for the signature hash done in-place

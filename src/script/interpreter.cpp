@@ -218,7 +218,7 @@ static bool IsDefinedHashtypeSignature(const valtype &vchSig)
         return false;
     }
     uint32_t nHashType = GetHashType(vchSig) & ~(SIGHASH_ANYONECANPAY | SIGHASH_FORKID);
-    if (nHashType < SIGHASH_ALL || nHashType > SIGHASH_SINGLE)
+    if (nHashType < SIGHASH_ALL || nHashType > SIGHASH_ANYOUTPUT)
         return false;
 
     return true;
